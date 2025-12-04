@@ -46,7 +46,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- NAVBAR (Updated to match Index.html) --- */
+        /* --- NAVBAR --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -54,7 +54,7 @@
             background: rgba(5, 5, 5, 0.9);
             backdrop-filter: blur(15px);
             display: flex;
-            justify-content: space-between; /* Adjusted for Logo + Links */
+            justify-content: space-between;
             align-items: center;
             z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
@@ -86,6 +86,36 @@
             gap: 2rem;
         }
 
+        /* --- NEW CSS FOR CONTRIBUTIONS SECTION (ADDED THIS) --- */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Desktop 2 cols, responsive */
+            gap: 2rem;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-family: var(--font-head);
+            letter-spacing: 1px;
+            background: transparent;
+            margin-top: auto; /* Pushes button to bottom */
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-cyan);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        /* ---------------------------------------------------- */
+
         /* --- CARD DESIGN --- */
         .card {
             background: var(--glass-surface);
@@ -97,6 +127,7 @@
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            height: 100%; /* Ensures equal height in grid */
         }
 
         .card:hover {
@@ -148,7 +179,6 @@
 
         /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 768px) {
-            /* Mobile Navbar Logic */
             .menu-toggle { display: block; z-index: 2000; }
             
             .nav-links {
@@ -170,13 +200,16 @@
 
             .section-title { font-size: 2rem; margin-top: 5rem; }
             .grid { grid-template-columns: 1fr; }
+            
+            /* Make contributions 1 col on mobile */
+            .grid-2-col { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo"><span class="neon-text-cyan">PRATEEK</span> <span class="neon-text-purple">JAIN</span></div>
+        <div class="logo"><span class="neon-text-cyan">PRATEEK JAIN</span></div>
         <div class="menu-toggle" id="mobile-menu">
             <i class="fas fa-bars"></i>
         </div>
@@ -237,7 +270,7 @@
             <div class="card">
                 <h3>Taskino</h3>
                 <a href="#" class="github-link"><i class="fab fa-github"></i></a>
-                <p>Advanced Task Management SPA with drag-and-drop filtering, status organization, and persistent data storage.</p>
+                <p>Task management SPA with drag-and-drop and persistent storage.</p>
                 <div class="tech-stack">
                     <span class="badge react">React</span>
                     <span class="badge html">Tailwind</span>
@@ -282,9 +315,9 @@
             </div>
 
             <div class="card">
-                <h3>Amazon Price Tracker</h3>
+                <h3>Amazon Price Extractor</h3>
                 <a href="#" class="github-link"><i class="fab fa-github"></i></a>
-                <p>Web scraper that monitors product prices and sends email alerts when prices drop below a target.</p>
+                <p>Price extractor that checks product prices and flags target-based drops.</p>
                 <div class="tech-stack">
                     <span class="badge py">Python</span>
                     <span class="badge py">BeautifulSoup</span>
@@ -292,9 +325,9 @@
             </div>
 
             <div class="card">
-                <h3>ClearFace</h3>
+                <h3>FacialNetX</h3>
                 <a href="#" class="github-link"><i class="fab fa-github"></i></a>
-                <p>Image processing utility to enhance facial features and remove noise from images.</p>
+                <p>Face-based system that stores facial data and enhances images by refining features and removing noise.</p>
                 <div class="tech-stack">
                     <span class="badge py">Python</span>
                     <span class="badge ai">Image Processing</span>
@@ -371,10 +404,22 @@
         <div style="text-align: center; margin-top: 5rem; color: var(--text-muted);">
             <p>Check out more on <a href="https://github.com/Prateekj2004" target="_blank" style="color: var(--primary-cyan); text-decoration: none;">GitHub</a></p>
         </div>
+        
+        <h2 class="section-title" style="margin-top: 6rem;">Key Contributions</h2>
+        <div class="grid-2-col">
+            <div class="card">
+                <h3><i class="fas fa-star neon-text-purple"></i> Character Bazaar</h3>
+                <p>Contributed to the frontend optimization and asset galleries for this animated character marketplace. Enhanced UI responsiveness for better user retention.</p>
+                <a href="https://www.characterbazaar.com/" target="_blank" class="btn-outline">Visit Site</a>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-star neon-text-purple"></i> Conscious Karma</h3>
+                <p>Revamped the interface of a SaaS cosmic energy engine, resolving critical logic bugs and rebuilding components to deliver a modern, high-performance, and fully responsive user experience.</p>
+                <a href="https://consciouskarma.co/" target="_blank" class="btn-outline">Visit Site</a>
+            </div>
+        </div>
 
-    </div>
-
-    <script>
+    </div> <script>
         // --- Mobile Menu Logic (Same as Index) ---
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
